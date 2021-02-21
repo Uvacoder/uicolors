@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react';
+import { useToast } from '@chakra-ui/react';
 import SideBar from '../components/SideBar';
 
 const colors = {
@@ -19,6 +20,8 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
 
+  const toast = useToast();
+
   function copyToClipboard(color) {
     window.navigator.clipboard.writeText(color);
   }
@@ -32,7 +35,7 @@ export default function Home() {
 
       <div className={`${isDark && 'dark'}`}>
         <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} />
-        <main className="pb-24 min-h-screen sm:pl-16 sm:pb-12 dark:bg-black">
+        <main className="pb-24 min-h-screen sm:pl-16 sm:pb-16 dark:bg-black">
           <div className="flex justify-center py-10">
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
           </div>
@@ -49,9 +52,23 @@ export default function Home() {
                 <div className="mr-4" key={index}>
                   <div className="flex justify-between">
                     <div className="text-xs dark:text-gray-500">{key}</div>
-                    <div className="text-xs dark:text-gray-500">{value}</div>
+                    <div className="text-xs dark:text-gray-500">{value.toUpperCase()}</div>
                   </div>
-                  <div onClick={() => copyToClipboard(value)} className="h-8 w-20 rounded shadow cursor-pointer" style={{backgroundColor: value}}></div>
+                  <div 
+                    onClick={() => {
+                      copyToClipboard(value);
+                      toast({
+                        title: `Color ${value.toUpperCase()} copied to clipboard`,
+                        description: "To copy rgb values click the RGB button in sidebar",
+                        status: "success",
+                        duration: 6000,
+                        isClosable: true,
+                        position: 'top-right',
+                      })
+                    }} 
+                    className="h-8 w-20 rounded shadow cursor-pointer" style={{backgroundColor: value}}
+                    >
+                    </div>
                 </div>
                 ))
                 }
