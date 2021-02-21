@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
+import hexToRGB from '../utils/hexToRGB';
 import SideBar from '../components/SideBar';
 
 const colors = {
@@ -22,7 +23,15 @@ export default function Home() {
 
   const toast = useToast();
 
+  let rgb;
+
   function copyToClipboard(color) {
+    const obj = hexToRGB(color);
+    rgb = `rgb(${obj.r}, ${obj.g}, ${obj.b})`;
+    if(showRGB) {
+      window.navigator.clipboard.writeText(rgb);
+      return;
+    }
     window.navigator.clipboard.writeText(color);
   }
 
@@ -58,8 +67,8 @@ export default function Home() {
                     onClick={() => {
                       copyToClipboard(value);
                       toast({
-                        title: `Color ${value.toUpperCase()} copied to clipboard`,
-                        description: "To copy rgb values click the RGB button in sidebar",
+                        title: `Color ${showRGB ? rgb : value.toUpperCase()} copied to clipboard`,
+                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${showRGB ? 'RGB' : 'HEX'} button in sidebar`,
                         status: "success",
                         duration: 6000,
                         isClosable: true,
