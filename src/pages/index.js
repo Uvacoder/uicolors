@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import { useState } from 'react';
 import SideBar from '../components/SideBar';
 
 export default function Home() {
+  const [isDark, setIsDark] = useState(false);
+
   return (
     <div>
       <Head>
@@ -9,8 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <SideBar />
+      <div className={`${isDark && 'dark'}`}>
+        <SideBar isDark={isDark} setIsDark={setIsDark} />
         <main></main>
       </div>
     </div>
