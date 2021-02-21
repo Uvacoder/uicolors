@@ -4,6 +4,8 @@ import SideBar from '../components/SideBar';
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
+  const [currentTab, setCurrentTab] = useState('tw');
+  const [showRGB, setShowRGB] = useState(false);
 
   return (
     <div>
@@ -13,7 +15,7 @@ export default function Home() {
       </Head>
 
       <div className={`${isDark && 'dark'}`}>
-        <SideBar isDark={isDark} setIsDark={setIsDark} />
+        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} />
         <main></main>
       </div>
     </div>
