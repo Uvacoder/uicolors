@@ -19,6 +19,10 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
 
+  function copyToClipboard(color) {
+    window.navigator.clipboard.writeText(color);
+  }
+
   return (
     <div>
       <Head>
@@ -47,7 +51,7 @@ export default function Home() {
                     <div className="text-xs dark:text-gray-500">{key}</div>
                     <div className="text-xs dark:text-gray-500">{value}</div>
                   </div>
-                  <div className="h-8 w-20 rounded shadow" style={{backgroundColor: value}}></div>
+                  <div onClick={() => copyToClipboard(value)} className="h-8 w-20 rounded shadow cursor-pointer" style={{backgroundColor: value}}></div>
                 </div>
                 ))
                 }
