@@ -76,7 +76,7 @@ export default function Home() {
               <div className="mt-2 flex flex-wrap justify-center text-gray-700">
                 {
                 Object.entries(value).map(([key, value], index) => (
-                <div className="mr-4" key={index}>
+                <div className="mr-4 mt-2" key={index}>
                   <div className="flex justify-between">
                     <div className="text-xs dark:text-gray-500">{key}</div>
                     <div className="text-xs dark:text-gray-500">{value.toUpperCase()}</div>
