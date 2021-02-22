@@ -73,7 +73,7 @@ export default function Home() {
             colors[currentTab].map(([key, value], index) => (
               <section key={index}>
               <h2 className="text-center uppercase text-sm font-bold text-gray-800 dark:text-white">{key}</h2>
-              <div className="mt-2 flex flex-wrap justify-center text-gray-700">
+              <div className="flex flex-wrap justify-center text-gray-700">
                 {
                 Object.entries(value).map(([key, value], index) => (
                 <div className="mr-4 mt-2" key={index}>
