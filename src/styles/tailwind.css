@@ -1,7 +1,7 @@
 @tailwind base;
 
 body::-webkit-scrollbar {
-    width: 0.25rem;
+    width: 0.35rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -9,12 +9,15 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #6649b8;
+    /* background-color: #6649b8; */
+    /* background-color: #8b5cf6; */
+    background-color: #818cf8;
 }
 
 :root {
     scrollbar-width: thin;
-    scrollbar-color: #6649b8 #1e1e24;
+    /* scrollbar-color: #6649b8 #1e1e24; */
+    scrollbar-color: #818cf8 #1e1e24;
 }
 
 @tailwind components;
