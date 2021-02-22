@@ -17,7 +17,7 @@ const heroImages = {
 }
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
