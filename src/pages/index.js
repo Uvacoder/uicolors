@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useToast } from '@chakra-ui/react';
 import hexToRGB from '../utils/hexToRGB';
 import SideBar from '../components/SideBar';
@@ -21,6 +21,8 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
 
+  const isInitialRender = useRef(true);
+
   const toast = useToast();
 
   let rgb;
@@ -34,6 +36,22 @@ export default function Home() {
     }
     window.navigator.clipboard.writeText(color);
   }
+
+  useEffect(() => {
+    if(isInitialRender.current) {
+      const item = window.localStorage.getItem('isDark');
+      if(item) {
+        const bool = item === 'true' ? true : false;
+        setIsDark(bool);
+      } else {
+        window.localStorage.setItem('isDark', isDark);
+      }
+      isInitialRender.current = false;
+    } else {
+      const item = window.localStorage.setItem('isDark', isDark);
+    }
+
+  }, [isDark])
 
   return (
     <div>
