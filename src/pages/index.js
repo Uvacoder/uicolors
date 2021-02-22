@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Get UI Colors</title>
+        <title>Expertly-crafted color palettes in one place.</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
