@@ -12,7 +12,15 @@ module.exports = {
       gray: colors.blueGray,
       purple: colors.purple
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '26': '104px',
+        "30": '120px'
+      },
+      fontSize: {
+        'xss': '0.625rem'
+      }
+    },
   },
   variants: {
     extend: {},

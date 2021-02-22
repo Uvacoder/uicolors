@@ -20,6 +20,7 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const isInitialRender = useRef(true);
 
@@ -61,8 +62,8 @@ export default function Home() {
       </Head>
 
       <div className={`${isDark && 'dark'}`}>
-        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} />
-        <main className="pb-24 min-h-screen sm:pl-16 sm:pb-16 dark:bg-black">
+        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+        <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 dark:bg-black`}>
           <div className="flex justify-center py-10">
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
           </div>
