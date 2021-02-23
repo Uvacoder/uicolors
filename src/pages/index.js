@@ -24,20 +24,6 @@ export default function Home() {
 
   const isInitialRender = useRef(true);
 
-  const toast = useToast();
-
-  let rgb;
-
-  function copyToClipboard(color) {
-    const obj = hexToRGB(color);
-    rgb = `rgb(${obj.r}, ${obj.g}, ${obj.b})`;
-    if(showRGB) {
-      window.navigator.clipboard.writeText(rgb);
-      return;
-    }
-    window.navigator.clipboard.writeText(color);
-  }
-
   useEffect(() => {
     if(isInitialRender.current) {
       const item = window.localStorage.getItem('isDark');
@@ -53,6 +39,20 @@ export default function Home() {
     }
 
   }, [isDark])
+
+  const toast = useToast();
+
+  let rgb;
+
+  function copyToClipboard(color) {
+    const obj = hexToRGB(color);
+    rgb = `rgb(${obj.r}, ${obj.g}, ${obj.b})`;
+    if(showRGB) {
+      window.navigator.clipboard.writeText(rgb);
+      return;
+    }
+    window.navigator.clipboard.writeText(color);
+  }
 
   return (
     <div>
