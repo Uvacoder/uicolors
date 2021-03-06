@@ -7,16 +7,15 @@ import SideBar from '../components/SideBar';
 const colors = {
   tw: require('../colors/tailwind'),
   chakra: require('../colors/chakra-ui'),
-  mui: require('../colors/mui')
+  mui: require('../colors/mui'),
+  ant: require('../colors/ant-design')
 }
-
-console.log(Array.isArray(colors.mui))
 
 const heroImages = {
   tw: '/tailwindcss-logo.svg',
   chakra: '/chakra-logomark.svg',
   mui: '/mui-logo.svg',
-  vuetify: 'vuetify-logo.svg'
+  ant: '/vuetify-logo.svg'
 }
 
 export default function Home() {
@@ -72,9 +71,6 @@ export default function Home() {
           </div>
           <div className="px-10 space-y-8">
             {
-            // currentTab === 'mui' || currentTab === 'vuetify' ?
-            currentTab === 'vuetify' ?
-            <p className="font-bold text-gray-800 text-center dark:text-white">Coming Soon ...</p> :
             colors[currentTab].map(([key, value], index) => (
               <section key={index}>
               <h2 className="text-center uppercase text-sm font-bold text-gray-800 dark:text-white">{key}</h2>
