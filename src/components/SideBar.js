@@ -47,7 +47,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
           </button>
           <button onClick={() => setCurrentTab('ant')} className={btnCls({active: currentTab === 'ant', isExpanded})}>
             <img className="h-6 w-6 select-none" src="/antdesign-logo.svg" alt="Ant Logo"/>
-            {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">ant</span>}
+            {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Ant Design</span>}
           </button>
         </div>
         <div className="flex justify-around items-center w-2/6 sm:w-auto sm:block sm:space-y-2">
