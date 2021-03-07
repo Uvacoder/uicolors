@@ -46,7 +46,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Material UI</span>}
           </button>
           <button onClick={() => setCurrentTab('ant')} className={btnCls({active: currentTab === 'ant', isExpanded})}>
-            <img className="h-6 w-6 select-none" src="/vuetify-logo.svg" alt="ant Logo"/>
+            <img className="h-6 w-6 select-none" src="/antdesign-logo.svg" alt="Ant Logo"/>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">ant</span>}
           </button>
         </div>

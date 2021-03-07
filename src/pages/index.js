@@ -15,7 +15,7 @@ const heroImages = {
   tw: '/tailwindcss-logo.svg',
   chakra: '/chakra-logomark.svg',
   mui: '/mui-logo.svg',
-  ant: '/vuetify-logo.svg'
+  ant: '/antdesign-logo.svg'
 }
 
 export default function Home() {
