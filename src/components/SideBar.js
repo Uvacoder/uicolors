@@ -18,7 +18,7 @@ const btnCls = clb({
   }
 });
 
-function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setShowRGB, isExpanded, setIsExpanded }) {
+function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setShowRGB, isExpanded, setIsExpanded, isOldView, setIsOldView }) {
   return (
     <nav className={`flex fixed bottom-0 h-16 w-screen bg-gray-100 transition-width sm:flex-col ${isExpanded ? 'sm:w-36': 'sm:w-16'} sm:h-screen sm:left-0 dark:bg-gray-800`}>
       <div onClick={() => setIsExpanded(!isExpanded)} className="px-3 cursor-pointer sm:bg-gradient-to-r sm:from-purple-400 sm:to-purple-700 hidden sm:block">
@@ -51,6 +51,12 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
           </button>
         </div>
         <div className="flex justify-around items-center w-2/6 sm:w-auto sm:block sm:space-y-2">
+          <button onClick={() => setIsOldView(!isOldView)} className={btnCls({active: isOldView, isExpanded})}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid-3x2-gap-fill dark:text-white text-gray-700" viewBox="0 0 16 16">
+              <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z"/>
+            </svg>
+            {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Dark Mode</span>}
+          </button>
           <button onClick={() => setShowRGB(!showRGB)} className={`${btnCls({active: false, isExpanded })} text-xss`}>
             <span className="select-none dark:text-white">{showRGB ? 'RGB' : 'HEX'}</span>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-xss whitespace-nowrap dark:text-gray-400">IS ACTIVE</span>}

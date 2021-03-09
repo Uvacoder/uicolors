@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect, useRef } from 'react';
 import { useToast } from '@chakra-ui/react';
 import hexToRGB from '../utils/hexToRGB';
+import isDarkBG from '../utils/isDarkBG';
 import SideBar from '../components/SideBar';
 
 const colors = {
@@ -23,6 +24,7 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState('tw');
   const [showRGB, setShowRGB] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isOldView, setIsOldView] = useState(false);
 
   const isInitialRender = useRef(true);
 
@@ -64,12 +66,15 @@ export default function Home() {
       </Head>
 
       <div className={`${isDark && 'dark'}`}>
-        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
-        <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 dark:bg-black`}>
+        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} isOldView={isOldView} setIsOldView={setIsOldView} />
+        <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 bg-pattern dark:bg-pattern bg-fixed`}>
           <div className="flex justify-center py-10">
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
           </div>
-          <div className="px-10 space-y-8">
+
+
+          {/* old view */}
+          {isOldView && <div className="px-10 space-y-8">
             {
             colors[currentTab].map(([key, value], index) => (
               <section key={index}>
@@ -104,7 +109,36 @@ export default function Home() {
               </section>
             ))
             }
-          </div>
+          </div>}
+          {/* new view */}
+          {!isOldView && <div className="mt-6 grid gap-x-8 gap-y-12 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-20">
+            {colors[currentTab].map(([key, value], index) => (
+              <div key={index}>
+                <span className="inline-block px-5 py-2 uppercase text-xs box-border" style={{backgroundColor: value[50]}}>{key}</span>
+                {Object.entries(value).map(([ikey, ivalue], index) => (
+                  <div
+                    onClick={() => {
+                      copyToClipboard(ivalue);
+                      toast({
+                        title: `Color ${showRGB ? rgb : ivalue.toUpperCase()} copied to clipboard`,
+                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${showRGB ? 'RGB' : 'HEX'} button in sidebar`,
+                        status: "success",
+                        duration: 6000,
+                        isClosable: true,
+                        position: 'top-right',
+                      })
+                    }} 
+                    key={index}
+                    className={`h-10 w-full flex justify-between items-center px-6 text-xs uppercase font-mono cursor-pointer`}
+                    style={{backgroundColor: ivalue, color: isDarkBG(ivalue) ? value[900] : value[100] }}
+                  >
+                    <span>{ikey}</span>
+                    <span>{ivalue}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>}
         </main>
       </div>
     </div>

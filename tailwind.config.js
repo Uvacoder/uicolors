@@ -12,6 +12,7 @@ module.exports = {
       gray: colors.blueGray,
       purple: colors.purple
     },
+    colors,
     extend: {
       spacing: {
         '26': '104px',
