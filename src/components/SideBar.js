@@ -21,12 +21,12 @@ const btnCls = clb({
 function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setShowRGB, isExpanded, setIsExpanded, isOldView, setIsOldView }) {
   return (
     <nav className={`flex fixed bottom-0 h-16 w-screen bg-gray-100 transition-width sm:flex-col ${isExpanded ? 'sm:w-36': 'sm:w-16'} sm:h-screen sm:left-0 dark:bg-gray-800`}>
-      <div onClick={() => setIsExpanded(!isExpanded)} className="px-3 cursor-pointer sm:bg-gradient-to-r sm:from-purple-400 sm:to-purple-700 hidden sm:block">
+      <div onClick={() => setIsExpanded(!isExpanded)} className="px-3 cursor-pointer hidden sm:block sm:bg-gray-400 sm:dark:bg-gray-700">
         <button className={`hidden group sm:h-16 sm:flex sm:focus:outline-none sm:items-center sm:px-2 sm:cursor-pointer transition-width overflow-hidden relative ${isExpanded ? 'w-30' : 'w-10'}`}>
-          <svg className={`h-6 w-6 select-none text-gray-200 group-hover:text-white transition-transform ${isExpanded && 'transform rotate-180'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className={`h-6 w-6 select-none text-gray-100 group-hover:text-white transition-transform ${isExpanded && 'transform rotate-180'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
           </svg>
-          {isExpanded && <span className="absolute select-none left-10 text-gray-200 text-sm font-bold whitespace-nowrap group-hover:text-white">Shrink</span>}
+          {isExpanded && <span className="absolute select-none left-10 text-gray-100 text-sm font-bold whitespace-nowrap group-hover:text-white">Shrink</span>}
         </button>
 
       </div>
