@@ -54,20 +54,31 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
         </div>
         <div className="flex justify-around items-center w-1/5 sm:w-auto sm:block sm:space-y-2">
           {showSettings && <div className="flex justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2">
-            <button onClick={() => setIsOldView(!isOldView)} className={btnCls({active: isOldView, isExpanded})}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-grid-3x2-gap-fill dark:text-white text-gray-700" viewBox="0 0 16 16">
+            {/* <button onClick={() => setIsOldView(!isOldView)} className={btnCls({active: isOldView, isExpanded})}> */}
+            <button onClick={() => setIsOldView(!isOldView)} className={btnCls({active: false, isExpanded})}>
+              {isOldView && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-grid-3x2-gap-fill dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" viewBox="0 0 16 16">
                 <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z"/>
-              </svg>
+              </svg>}
+              {!isOldView && <svg className="bi bi-grid-3x2-gap-fill dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors transform scale-90" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M3 0h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3zm0 8h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3z"/>
+              </svg>}
               {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Row View</span>}
             </button>
             <button onClick={() => setShowRGB(!showRGB)} className={`${btnCls({active: false, isExpanded })} text-xss`}>
-              <span className="select-none dark:text-white">{showRGB ? 'RGB' : 'HEX'}</span>
+              <span className="select-none dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-900 transition-colors">{showRGB ? 'RGB' : 'HEX'}</span>
               {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-xss whitespace-nowrap dark:text-gray-400">IS ACTIVE</span>}
             </button>
-            <button onClick={() => setIsDark(!isDark)} className={btnCls({active: isDark, isExpanded})}>
-              <svg className="h-6 w-6 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {/* <button onClick={() => setIsDark(!isDark)} className={btnCls({active: isDark, isExpanded})}> */}
+            <button onClick={() => setIsDark(!isDark)} className={btnCls({active: false, isExpanded})}>
+              {isDark && <svg className="h-6 w-6 dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
+              </svg>}
+              {/* {!isDark && <svg className="h-6 w-6 dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>} */}
+              {!isDark && <svg className="h-6 w-6 dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>}
               {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Dark Mode</span>}
             </button>
 
