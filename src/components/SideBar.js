@@ -6,7 +6,8 @@ const tabClasses = ({isActive, isExpanded}) => {
 }
 
 const btnCls = clb({
-  base: 'h-10 px-2 flex items-center rounded cursor-pointer transition-width overflow-x-hidden relative focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-900',
+  // base: 'h-10 px-2 flex items-center rounded cursor-pointer transition-width overflow-x-hidden relative focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-900 group',
+  base: 'h-10 px-2 flex items-center rounded cursor-pointer transition-width overflow-x-hidden relative focus:outline-none group',
   variants: {
     active: {
       true:'bg-gray-200 dark:bg-gray-900'
@@ -35,19 +36,19 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
       <div className="flex px-4 space-x-3 sm:space-x-0 sm:px-3 sm:h-full sm:flex-col sm:flex-grow sm:justify-between sm:items-center sm:py-4">
         <div className="flex justify-around items-center w-4/5 space-x-3 sm:space-x-0 sm:w-auto sm:block sm:space-y-2">
           <button onClick={() => setCurrentTab('tw')} className={btnCls({active: currentTab === 'tw', isExpanded})}>
-            <img className="h-6 w-6 select-none" src="/tailwindcss-logo.svg" alt="Tailwind CSS Logo"/>
+            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'tw' ? 'scale-100 opacity-100' : ''}`} src="/tailwindcss-logo.svg" alt="Tailwind CSS Logo"/>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Tailwind</span>}
           </button>
           <button onClick={() => setCurrentTab('chakra')} className={btnCls({active: currentTab === 'chakra', isExpanded})}>
-            <img className="h-6 w-6 select-none" src="/chakra-logomark.svg" alt="Chakra UI Logo"/>
+            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'chakra' ? 'scale-100 opacity-100' : ''}`} src="/chakra-logomark.svg" alt="Chakra UI Logo"/>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Chakra UI</span>}
           </button>
           <button onClick={() => setCurrentTab('mui')} className={btnCls({active: currentTab === 'mui', isExpanded})}>
-            <img className="h-6 w-6 select-none" src="/mui-logo.svg" alt="Material UI Logo"/>
+            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-110 group-hover:opacity-100 ${currentTab === 'mui' ? 'scale-110 opacity-100' : ''}`} src="/mui-logo.svg" alt="Material UI Logo"/>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Material UI</span>}
           </button>
           <button onClick={() => setCurrentTab('ant')} className={btnCls({active: currentTab === 'ant', isExpanded})}>
-            <img className="h-6 w-6 select-none" src="/antdesign-logo.svg" alt="Ant Logo"/>
+            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'ant' ? 'scale-100 opacity-100' : ''}`} src="/antdesign-logo.svg" alt="Ant Logo"/>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Ant Design</span>}
           </button>
         </div>
@@ -72,7 +73,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
 
           </div>}
           <button onClick={() => setShowSettings(!showSettings)} className={btnCls({active: showSettings, isExpanded})}>
-            <svg className="h-6 w-6 text-gray-700 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`h-6 w-6 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-white transition-colors ${showSettings ? 'dark:text-white text-gray-700' : 'dark:text-gray-400'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
