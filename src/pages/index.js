@@ -25,6 +25,7 @@ export default function Home() {
   const [showRGB, setShowRGB] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isOldView, setIsOldView] = useState(false);
+  const [showSettings, setShowSettings] = useState(false)
 
   const isInitialRender = useRef(true);
 
@@ -66,7 +67,7 @@ export default function Home() {
       </Head>
 
       <div className={`${isDark && 'dark'}`}>
-        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} isOldView={isOldView} setIsOldView={setIsOldView} />
+        <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} isOldView={isOldView} setIsOldView={setIsOldView} showSettings={showSettings} setShowSettings={setShowSettings} />
         <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 bg-pattern dark:bg-pattern bg-fixed`}>
           <div className="flex justify-center py-10">
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
