@@ -73,7 +73,6 @@ export default function Home() {
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
           </div>
 
-
           {/* old view */}
           {isOldView && <div className="px-10 space-y-8">
             {
@@ -111,6 +110,7 @@ export default function Home() {
             ))
             }
           </div>}
+
           {/* new view */}
           {!isOldView && <div className="mt-6 grid gap-x-8 gap-y-12 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-20">
             {colors[currentTab].map(([key, value], index) => (
