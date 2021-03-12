@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { useToast } from '@chakra-ui/react';
 import hexToRGB from '../utils/hexToRGB';
@@ -70,7 +71,7 @@ export default function Home() {
         <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} isOldView={isOldView} setIsOldView={setIsOldView} showSettings={showSettings} setShowSettings={setShowSettings} />
         <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 bg-pattern dark:bg-pattern bg-fixed`}>
           <div className="flex justify-center py-10">
-            <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
+            <div className="relative w-full h-14 sm:h-24"><Image src={heroImages[currentTab]} layout="fill" /></div>
           </div>
 
 
@@ -111,6 +112,7 @@ export default function Home() {
             ))
             }
           </div>}
+
           {/* new view */}
           {!isOldView && <div className="mt-6 grid gap-x-8 gap-y-12 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-20">
             {colors[currentTab].map(([key, value], index) => (

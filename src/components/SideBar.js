@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import clb from 'clb';
 
 const tabClasses = ({isActive, isExpanded}) => {
@@ -36,19 +37,19 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
       <div className="flex px-4 space-x-3 sm:space-x-0 sm:px-3 sm:h-full sm:flex-col sm:flex-grow sm:justify-between sm:items-center sm:py-4">
         <div className="flex justify-around items-center w-4/5 space-x-3 sm:space-x-0 sm:w-auto sm:block sm:space-y-2">
           <button onClick={() => setCurrentTab('tw')} className={btnCls({active: currentTab === 'tw', isExpanded})}>
-            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'tw' ? 'scale-100 opacity-100' : ''}`} src="/tailwindcss-logo.svg" alt="Tailwind CSS Logo"/>
+            <div className="relative h-6 w-6"><Image className={`select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'tw' ? 'scale-100 opacity-100' : ''}`} src="/tailwindcss-logo.svg" alt="Tailwind CSS Logo" layout="fill"/></div>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Tailwind</span>}
           </button>
           <button onClick={() => setCurrentTab('chakra')} className={btnCls({active: currentTab === 'chakra', isExpanded})}>
-            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'chakra' ? 'scale-100 opacity-100' : ''}`} src="/chakra-logomark.svg" alt="Chakra UI Logo"/>
+            <div className="relative h-6 w-6"><Image className={`select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'chakra' ? 'scale-100 opacity-100' : ''}`} src="/chakra-logomark.svg" alt="Chakra UI Logo" layout="fill"/></div>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Chakra UI</span>}
           </button>
           <button onClick={() => setCurrentTab('mui')} className={btnCls({active: currentTab === 'mui', isExpanded})}>
-            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-110 group-hover:opacity-100 ${currentTab === 'mui' ? 'scale-110 opacity-100' : ''}`} src="/mui-logo.svg" alt="Material UI Logo"/>
+            <div className="relative h-6 w-6"><Image className={`select-none transform-gpu scale-90 opacity-90 group-hover:scale-110 group-hover:opacity-100 ${currentTab === 'mui' ? 'scale-110 opacity-100' : ''}`} src="/mui-logo.svg" alt="Material UI Logo" layout="fill"/></div>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Material UI</span>}
           </button>
           <button onClick={() => setCurrentTab('ant')} className={btnCls({active: currentTab === 'ant', isExpanded})}>
-            <img className={`h-6 w-6 select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'ant' ? 'scale-100 opacity-100' : ''}`} src="/antdesign-logo.svg" alt="Ant Logo"/>
+            <div className="relative h-6 w-6"><Image className={`select-none transform-gpu scale-90 opacity-90 group-hover:scale-100 group-hover:opacity-100 ${currentTab === 'ant' ? 'scale-100 opacity-100' : ''}`} src="/antdesign-logo.svg" alt="Ant Logo" layout="fill"/></div>
             {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Ant Design</span>}
           </button>
         </div>
