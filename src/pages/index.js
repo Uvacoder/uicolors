@@ -92,7 +92,7 @@ export default function Home() {
                       copyToClipboard(value);
                       toast({
                         title: `Color ${showRGB ? rgb : value.toUpperCase()} copied to clipboard`,
-                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${showRGB ? 'RGB' : 'HEX'} button in settings`,
+                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${!showRGB ? 'RGB' : 'HEX'} button in settings`,
                         status: "success",
                         duration: 6000,
                         isClosable: true,
@@ -122,7 +122,7 @@ export default function Home() {
                       copyToClipboard(ivalue);
                       toast({
                         title: `Color ${showRGB ? rgb : ivalue.toUpperCase()} copied to clipboard`,
-                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${showRGB ? 'RGB' : 'HEX'} button in settings`,
+                        description: `To copy ${showRGB ? 'hex' : 'rgb'} values click the ${!showRGB ? 'RGB' : 'HEX'} button in settings`,
                         status: "success",
                         duration: 6000,
                         isClosable: true,
