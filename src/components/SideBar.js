@@ -14,8 +14,33 @@ const btnCls = clb({
   }
 });
 
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
 function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setShowRGB, isExpanded, setIsExpanded, isOldView, setIsOldView, showSettings, setShowSettings }) {
   const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({name: '', email: '', message: ''});
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    fetch("/", {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded"},
+      body: encode({"form-name": "contact", ...formData})
+    })
+    .then(() => console.log('success'))
+    .catch((err) => console.log(err))
+  }
+
+  function handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormData({...formData, [name]: value});
+  }
 
   return (
     <nav className={`flex fixed bottom-0 h-16 w-screen bg-gray-100 transition-width sm:flex-col ${isExpanded ? 'sm:w-36': 'sm:w-16'} sm:h-screen sm:left-0 dark:bg-gray-800`}>
@@ -52,19 +77,19 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
         <div className="flex justify-around items-center w-1/5 sm:w-auto sm:block sm:space-y-2">
           {showSettings && <div className="flex justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2">
             {showForm && <div onClick={(e) => {e.target === e.currentTarget && setShowForm(false)}} className={`flex justify-center items-center fixed z-20 inset-0 h-screen w-screen bg-gray-700 bg-opacity-70`}>
-              <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" className="w-full max-w-lg bg-white rounded px-10 py-8">
+              <form onSubmit={handleSubmit} name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" className="w-full max-w-lg bg-white rounded px-10 py-8">
                 <input type="hidden" name="form-name" value="contact" />
                 <label>
                   <div className="text-gray-600 font-bold">Name<span className="text-red-500 ml-1 text-sm">*</span></div>
-                  <input className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="text" name="name" required/>
+                  <input onChange={handleChange} value={formData.name} className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500 text-gray-700" type="text" name="name" required/>
                 </label>
                 <label className="mt-4 block">
                   <div className="text-gray-600 font-bold">Email<span className="text-red-500 ml-1 text-sm">*</span></div>
-                  <input className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="email" name="email" required/>
+                  <input onChange={handleChange} value={formData.email} className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500 text-gray-700" type="email" name="email" required/>
                 </label>
                 <label className="mt-4 block">
                   <div className="text-gray-600 font-bold">Message<span className="text-red-500 ml-1 text-sm">*</span></div>
-                  <textarea className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="text" name="name" rows="3"/>
+                  <textarea onChange={handleChange} value={formData.message} className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500 text-gray-700" type="text" name="message" rows="3"/>
                 </label>
                 <input className="block mt-4 w-full bg-gray-600 py-3 rounded font-bold text-white cursor-pointer hover:bg-gray-800" type="submit" value="Submit"/>
               </form>
