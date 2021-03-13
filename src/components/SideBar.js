@@ -75,8 +75,8 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
           </button>
         </div>
         <div className="flex justify-around items-center w-1/5 sm:w-auto sm:block sm:space-y-2">
-          {showSettings && <div className="flex justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2">
-            {showForm && <div onClick={(e) => {e.target === e.currentTarget && setShowForm(false)}} className={`flex justify-center items-center fixed z-20 inset-0 h-screen w-screen bg-gray-700 bg-opacity-70`}>
+          <div className={`${showSettings ? 'flex' : 'hidden'} justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2`}>
+            <div onClick={(e) => {e.target === e.currentTarget && setShowForm(false)}} className={`${showForm ? 'flex' : 'hidden'} justify-center items-center fixed z-20 inset-0 h-screen w-screen bg-gray-700 bg-opacity-70`}>
               <form onSubmit={handleSubmit} name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" className="w-full max-w-lg bg-white rounded px-10 py-8">
                 <input type="hidden" name="form-name" value="contact" />
                 <label>
@@ -93,7 +93,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
                 </label>
                 <input className="block mt-4 w-full bg-gray-600 py-3 rounded font-bold text-white cursor-pointer hover:bg-gray-800" type="submit" value="Submit"/>
               </form>
-            </div>}
+            </div>
             <button onClick={() => setShowForm(true)} className={`${btnCls({active: false, isExpanded})} hidden sm:flex`}>
               <svg className="bi bi-grid-3x2-gap-fill w-6 h-6 dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
@@ -123,7 +123,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
               {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">{isDark ? 'Light':'Dark'} Mode</span>}
             </button>
 
-          </div>}
+          </div>
           <button onClick={() => setShowSettings(!showSettings)} className={btnCls({active: showSettings, isExpanded})}>
             <svg className={`h-6 w-6 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-white transition-colors ${showSettings ? 'dark:text-white text-gray-700' : 'dark:text-gray-400'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
