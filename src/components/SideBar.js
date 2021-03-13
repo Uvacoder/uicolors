@@ -42,7 +42,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
       console.log('success');
       if(!submitSuccess) {
         setSubmitSuccess(true);
-        setFormData({});
+        setFormData({name:'', email: '', message: ''});
       }
     })
     .catch((err) => console.log(err))
