@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import clb from 'clb';
 
 const btnCls = clb({
@@ -14,6 +15,8 @@ const btnCls = clb({
 });
 
 function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setShowRGB, isExpanded, setIsExpanded, isOldView, setIsOldView, showSettings, setShowSettings }) {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <nav className={`flex fixed bottom-0 h-16 w-screen bg-gray-100 transition-width sm:flex-col ${isExpanded ? 'sm:w-36': 'sm:w-16'} sm:h-screen sm:left-0 dark:bg-gray-800`}>
       <div onClick={() => setIsExpanded(!isExpanded)} className="px-3 cursor-pointer hidden sm:block sm:bg-gray-400 sm:dark:bg-gray-700">
@@ -48,6 +51,31 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
         </div>
         <div className="flex justify-around items-center w-1/5 sm:w-auto sm:block sm:space-y-2">
           {showSettings && <div className="flex justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2">
+            {showForm && <div onClick={(e) => {e.target === e.currentTarget && setShowForm(false)}} className={`flex justify-center items-center fixed z-20 inset-0 h-screen w-screen bg-gray-700 bg-opacity-70`}>
+              <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" className="w-full max-w-lg bg-white rounded px-10 py-8">
+                <input type="hidden" name="form-name" value="contact" />
+                <label>
+                  <div className="text-gray-600 font-bold">Name<span className="text-red-500 ml-1 text-sm">*</span></div>
+                  <input className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="text" name="name" required/>
+                </label>
+                <label className="mt-4 block">
+                  <div className="text-gray-600 font-bold">Email<span className="text-red-500 ml-1 text-sm">*</span></div>
+                  <input className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="email" name="email" required/>
+                </label>
+                <label className="mt-4 block">
+                  <div className="text-gray-600 font-bold">Message<span className="text-red-500 ml-1 text-sm">*</span></div>
+                  <textarea className="mt-1 w-full border rounded px-4 py-2 focus:outline-none focus:border-gray-500" type="text" name="name" rows="3"/>
+                </label>
+                <input className="block mt-4 w-full bg-gray-600 py-3 rounded font-bold text-white cursor-pointer hover:bg-gray-800" type="submit" value="Submit"/>
+              </form>
+            </div>}
+            <button onClick={() => setShowForm(true)} className={`${btnCls({active: false, isExpanded})} hidden sm:flex`}>
+              <svg className="bi bi-grid-3x2-gap-fill w-6 h-6 dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+              </svg>
+              {isExpanded && <span className="hidden sm:block absolute select-none left-10 text-gray-700 text-sm whitespace-nowrap dark:text-gray-400">Contact</span>}
+            </button>
             <button onClick={() => setIsOldView(!isOldView)} className={btnCls({active: false, isExpanded})}>
               {!isOldView && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-grid-3x2-gap-fill dark:text-gray-400 text-gray-500 dark:group-hover:text-white group-hover:text-gray-700 transition-colors" viewBox="0 0 16 16">
                 <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z"/>
