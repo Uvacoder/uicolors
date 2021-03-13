@@ -75,7 +75,7 @@ function SideBar({ isDark, setIsDark, currentTab, setCurrentTab, showRGB, setSho
           </button>
         </div>
         <div className="flex justify-around items-center w-1/5 sm:w-auto sm:block sm:space-y-2">
-          <div className={`${showSettings ? 'flex' : 'hidden'} justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto sm:block sm:space-y-2`}>
+          <div className={`${showSettings ? 'flex' : 'hidden'} justify-around items-center absolute bottom-16 left-1/2 transform -translate-x-1/2 space-x-3 sm:space-x-0 sm:transform-none px-3 py-2 rounded-t-md sm:p-0 bg-gray-100 dark:bg-gray-800 sm:static sm:w-auto ${showSettings ? 'sm:block' : 'hidden'} sm:space-y-2`}>
             <div onClick={(e) => {e.target === e.currentTarget && setShowForm(false)}} className={`${showForm ? 'flex' : 'hidden'} justify-center items-center fixed z-20 inset-0 h-screen w-screen bg-gray-700 bg-opacity-70`}>
               <form onSubmit={handleSubmit} name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" className="w-full max-w-lg bg-white rounded px-10 py-8">
                 <input type="hidden" name="form-name" value="contact" />
