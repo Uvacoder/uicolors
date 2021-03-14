@@ -66,15 +66,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`${isDark && 'dark'}`}>
+      <div className={`${isDark ? 'dark' : ''}`}>
         <SideBar isDark={isDark} setIsDark={setIsDark} currentTab={currentTab} setCurrentTab={setCurrentTab} showRGB={showRGB} setShowRGB={setShowRGB} isExpanded={isExpanded} setIsExpanded={setIsExpanded} isOldView={isOldView} setIsOldView={setIsOldView} showSettings={showSettings} setShowSettings={setShowSettings} />
         <main className={`pb-24 min-h-screen sm:pl-16 sm:pb-16 bg-pattern dark:bg-pattern bg-fixed`}>
           <div className="flex justify-center py-10">
             <img className="h-14 sm:h-24" src={heroImages[currentTab]} alt=""/>
           </div>
 
-          {/* old view */}
-          {isOldView && <div className="px-10 space-y-8">
+          {/* row view */}
+          <div className={`px-10 space-y-8 ${isOldView ? 'block' : 'hidden'}`}>
             {
             colors[currentTab].map(([key, value], index) => (
               <section key={index}>
@@ -109,10 +109,10 @@ export default function Home() {
               </section>
             ))
             }
-          </div>}
+          </div>
 
-          {/* new view */}
-          {!isOldView && <div className="mt-6 grid gap-x-8 gap-y-12 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-20">
+          {/* column view */}
+          <div className={`mt-6 ${!isOldView ? 'grid' : 'hidden'} gap-x-8 gap-y-12 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-20`}>
             {colors[currentTab].map(([key, value], index) => (
               <div key={index}>
                 <span className="inline-block px-5 py-2 uppercase text-xs box-border" style={{backgroundColor: value[50]}}>{key}</span>
@@ -139,7 +139,7 @@ export default function Home() {
                 ))}
               </div>
             ))}
-          </div>}
+          </div>
         </main>
       </div>
     </div>
